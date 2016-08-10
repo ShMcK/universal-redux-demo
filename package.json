@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --color"
+    "start": "webpack-dev-server --progress --color",
+    "server": "nodemon server"
   },
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "MIT",
