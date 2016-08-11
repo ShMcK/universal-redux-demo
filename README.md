@@ -3,16 +3,21 @@
 Allowing for optimistic updates between two synched Redux stores. See below
 
 ```
-|---------| -> action -> store
-| client  |                |
-|_________| <---   remote action middleware
-  ^                         |
-  | SET_STATE               |
-  |                         |
-|---------|  <---------------
-| server  |
-|_________| -> action -> store
-    ^_______________________|
+|---------| -> action
+|         |      v
+| client  |    store
+|         |      v
+|_________| <- sync middleware
+  ^               |
+  | SYNC          |
+  |               |
+|---------|  <-----
+|         |
+| server  | -> action
+|         |      v
+|_________|    store
+    ^            v
+    |-----sync middleware
 ```
 
 ### Setup
