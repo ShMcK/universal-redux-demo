@@ -3,7 +3,7 @@ const SORT_BY_POPULARITY = 'SORT_BY_POPULARITY';
 
 export const voteUp = id => {
   return (dispatch) => {
-    dispatch({ type: VOTE_UP, payload: { id } });
+    dispatch({ type: VOTE_UP, payload: { id }, meta: { remote: true } });
     dispatch(sortByPopularity());
   };
 };
