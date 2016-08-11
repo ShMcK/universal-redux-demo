@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --color",
+    "start": "webpack-dev-server webpack/dev.webpack.config.js --progress --color",
     "server": "nodemon server"
   },
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
@@ -14,7 +14,10 @@
     "react-dom": "15.3.0",
     "react-redux": "4.4.5",
     "react-router": "2.6.1",
-    "redux": "3.5.2"
+    "redux": "3.5.2",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
+    "ws": "^1.1.1"
   },
   "devDependencies": {
     "babel": "6.5.2",
@@ -25,6 +28,8 @@
     "eslint": "3.2.2",
     "eslint-plugin-react": "6.0.0",
     "express": "4.14.0",
+    "html-webpack-plugin": "^2.22.0",
+    "open-browser-webpack-plugin": "0.0.2",
     "react-hot-loader": "1.3.0",
     "redux-logger": "2.6.1",
     "redux-thunk": "2.1.0",

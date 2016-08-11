@@ -1,15 +1,17 @@
 const { join } = require('path');
 const webpack = require('webpack');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry:  [
-    'webpack-dev-server/client?http://127.0.0.1:8080/',
-    'webpack/hot/only-dev-server',
-    './client/index.js'
+    'webpack-hot-middleware/client?reload=true',
+    join(__dirname, 'client')
   ],
   output: {
-    path:     join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   resolve: {
     modulesDirectories: ['node_modules', 'shared'],
@@ -26,11 +28,18 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
+    new HtmlWebpackPlugin({
+      template: 'dist/index.html',
+      inject: 'body',
+      filename: 'index.html',
+    }),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
   ],
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-    host: '127.0.0.1'
-  }
+  devtool: 'inline-source-map'
 };
+``

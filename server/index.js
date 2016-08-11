@@ -1,14 +1,9 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
-});
-
-app.listen(3000, () => {
-  console.log('Server listening on port 3000...');
-});
+require('./middleware')(app);
+require('./routes')(app);
+require('./server')(app);
