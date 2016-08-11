@@ -16,7 +16,7 @@ ws.onerror = (err) => {
   console.log(err);
 };
 
-ws.onmessage = ({ data }) => {
+ws.onmessage = (data) => {
   console.log(data);
 };
 

@@ -4,7 +4,7 @@ const WebSocketServer = require('ws').Server;
 let connected = false;
 let socket = null;
 
-export function createWS(server) {
+module.exports = function createWS(server) {
   const wss = new WebSocketServer({ server: server });
 
   wss.on('connection', (ws) => {
@@ -35,8 +35,3 @@ export function createWS(server) {
 
   });
 }
-
-export const syncClientMiddleware = store => next => action => {
-  socket.send(JSON.stringify(`{ type: 'SET_STATE', payload: { store: ${store} }`))
-  return next(action);
-};
