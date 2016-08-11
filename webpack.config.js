@@ -32,7 +32,7 @@ module.exports = {
     new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
     new HtmlWebpackPlugin({
       template: 'dist/index.html',
-      inject: 'body',
+      inject: false,
       filename: 'index.html',
     }),
     new webpack.NoErrorsPlugin(),

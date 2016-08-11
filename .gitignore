@@ -4,3 +4,4 @@ npm-debug.log
 .idea
 public
 compiled
+dist/bundle.js
