@@ -1,4 +1,5 @@
 const WebSocketServer = require('ws').Server;
+const store = require('./store');
 
 module.exports = function createWS(server) {
   const wss = new WebSocketServer({ server: server });
@@ -15,11 +16,15 @@ module.exports = function createWS(server) {
   });
 
   ws.on('message', (data) => {
-    console.log(data);
-
-    // setTimeout(() => {
-    //   ws.send('pong');
-    // }, 500);
+    try {
+      const action = JSON.parse(data);
+      if (action.hasOwnProperty('type')) {
+        console.log('action: ', action);
+        store.dispatch(action);
+      }
+    } catch (msg) {
+      console.log(msg)
+    }
   });
 
   });
