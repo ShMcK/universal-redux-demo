@@ -1,14 +1,15 @@
-import store from '../shared/store';
+import buildStore from '../shared/store';
 import render from './components';
 import {voteUp} from '../shared/modules/pokemon';
 
+const store = buildStore('client');
 // Test: dispatch updates votes
 store.dispatch(voteUp(2));
 store.dispatch(voteUp(2));
 
-render();
+export default store;
 
-console.log('hello!!!!');
+render();
 
 const host = window.document.location.host.replace(/:.*/, '');
 const ws = new WebSocket('ws://' + host + ':3000');

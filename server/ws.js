@@ -7,7 +7,7 @@ module.exports = function createWS(server) {
 
   ws.on('open', () => {
     console.log('connected');
-    ws.send('pong');
+    // ws.send('pong');
   });
 
   ws.on('close', () => {
@@ -17,9 +17,9 @@ module.exports = function createWS(server) {
   ws.on('message', (data) => {
     console.log(data);
 
-    setTimeout(() => {
-      ws.send('pong');
-    }, 500);
+    // setTimeout(() => {
+    //   ws.send('pong');
+    // }, 500);
   });
 
   });

@@ -1,5 +1,9 @@
 # Redux Client & Server Demo
 
-### Server
+### Setup
 
-`npm run server`
+`npm install`
+
+### Development
+
+`npm start`
