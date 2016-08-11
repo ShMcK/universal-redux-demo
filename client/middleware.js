@@ -16,7 +16,9 @@
 
 // remove action middleware;
 const remoteActionMiddleware = store => next => action => {
-  console.log('action called!', action);
+  if (action.meta && action.meta.remote) {
+    console.log('send action to server', action);
+  }
   return next(action);
 }
 export default remoteActionMiddleware;
