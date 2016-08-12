@@ -1,6 +1,6 @@
 # Redux Client & Server Demo
 
-Allowing for optimistic updates between two synched Redux stores. See below
+Allowing for optimistic updates between two synched Redux stores. See below:
 
 ```
 |---------| -> action
@@ -9,7 +9,7 @@ Allowing for optimistic updates between two synched Redux stores. See below
 |         |      v
 |_________| <- sync middleware
   ^               |
-  | SYNC          |
+  | SET_STATE     |
   |               |
 |---------|  <-----
 |         |
