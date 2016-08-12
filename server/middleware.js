@@ -1,8 +1,10 @@
+const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-module.exports = function(app) {
+module.exports = (app) => {
+
   const config = require('../webpack.config');
   const compiler = webpack(config);
 
@@ -21,4 +23,11 @@ module.exports = function(app) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
+
+  app.get('*', (req, res) => {
+    res.write(middleware.fileSystem.readFileSync(
+      path.join(__dirname, '..', 'dist/index.html'))
+    );
+    res.end();
+  });
 }

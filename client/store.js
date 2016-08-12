@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import remoteActionMiddleware from './remote';
+import remoteActionMiddleware from './middleware/remote';
+import socket from './middleware/socket';
 import reducers from '../shared/reducers';
 
-const logger = createLogger();
+// const logger = createLogger();
 
-export default createStore(
+const store = createStore(
   reducers,
-  applyMiddleware(thunk, remoteActionMiddleware, logger)
+  applyMiddleware(thunk, remoteActionMiddleware(socket))
 );
+export default store;

@@ -40,7 +40,7 @@ function sortByKey(key) {
   }
 }
 
-const reducer = (pokemon = defaultPokemon, action) => {
+export default function reducer(pokemon = defaultPokemon, action) {
   switch (action.type) {
     case VOTE_UP:
       const { id } = action.payload;
@@ -56,5 +56,3 @@ const reducer = (pokemon = defaultPokemon, action) => {
       return pokemon
   }
 };
-
-export default reducer;
