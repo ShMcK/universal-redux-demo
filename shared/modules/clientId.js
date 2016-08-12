@@ -14,7 +14,7 @@ export function getClientId() {
 export function setClientId(clientId) {
   return {
     type: SET_CLIENT_ID,
-    payload: { clientId },
+    clientId,
     meta: { remote: true },
   };
 }
@@ -22,7 +22,8 @@ export function setClientId(clientId) {
 export default function reducer(clientId = null, action) {
   switch(action.type) {
     case SET_CLIENT_ID:
-      return action.payload.clientId;
+      console.log(action.clientId);
+      return action.clientId;
     default:
       return clientId;
   }
