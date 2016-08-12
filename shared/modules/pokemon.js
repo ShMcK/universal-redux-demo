@@ -7,7 +7,7 @@ export const voteUp = id => {
     dispatch(sortByPopularity());
   };
 };
-export const sortByPopularity = () => ({ type: SORT_BY_POPULARITY });
+export const sortByPopularity = () => ({ type: SORT_BY_POPULARITY, meta: { remote: true } });
 
 const defaultPokemon = [{
   id: 1,
@@ -42,6 +42,9 @@ function sortByKey(key) {
 
 export default function reducer(pokemon = defaultPokemon, action) {
   switch (action.type) {
+    case 'SET_STATE':
+      console.log('SET_STATE', action.payload.state);
+      return action.payload.state.pokemon;
     case VOTE_UP:
       const { id } = action.payload;
       return pokemon.map(p => {

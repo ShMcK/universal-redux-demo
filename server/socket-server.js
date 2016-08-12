@@ -9,11 +9,13 @@ module.exports = function startSocketServer() {
   io.on('connection', (socket) => {
     console.log('socket connected');
 
+    // seed client
     socket.emit('state', store.getState());
 
     socket.on('action', (action) => {
       console.log(action);
       store.dispatch.bind(store)(action);
+      socket.emit('state', store.getState());
     });
 
     socket.on('disconnect', () => {
