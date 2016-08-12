@@ -5,8 +5,6 @@ import remoteActionMiddleware from './middleware/remote';
 import socket from './middleware/socket';
 import reducers from '../shared/reducers';
 
-// const logger = createLogger();
-
 const store = createStore(
   reducers,
   applyMiddleware(thunk, remoteActionMiddleware(socket))

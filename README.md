@@ -20,6 +20,12 @@ Allowing for optimistic updates between two synched Redux stores. See below:
     |-----sync middleware
 ```
 
+## Features
+
+- 2 Synched Redux stores
+- Optimistic UI updates
+- Web Sockets
+
 ### Setup
 
 `npm install`

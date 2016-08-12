@@ -56,7 +56,6 @@ export default function reducer(pokemon = defaultPokemon, action) {
       const { id } = action.payload;
       return pokemon.map(p => {
         if (id === p.id) {
-          console.log(id);
           votes[id].add(action.clientId);
           p.votes = votes[id].size;
         }
