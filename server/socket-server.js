@@ -14,9 +14,12 @@ module.exports = function startSocketServer() {
 
     socket.on('action', (action) => {
       console.log(action);
+
       // block SET_STATE requests from client
       if (action.type !== 'SET_STATE') {
         store.dispatch.bind(store)(action);
+
+        // emit state
         socket.emit('state', store.getState());
       }
     });
